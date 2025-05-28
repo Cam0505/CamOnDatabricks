@@ -1,10 +1,8 @@
-FROM python:3.11-slim
+FROM mcr.microsoft.com/devcontainers/python:3.11
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
-    dash \
-    sudo \
     git \
     curl \
     && rm -rf /var/lib/apt/lists/*
@@ -16,5 +14,3 @@ RUN pip install --upgrade pip && \
 
 # Set working directory
 WORKDIR /workspaces/CamOnDataBricks
-
-CMD ["bash"]

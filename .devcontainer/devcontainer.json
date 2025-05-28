@@ -1,8 +1,13 @@
 {
   "name": "CamOnDataBricks",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspaces/CamOnDataBricks",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "cacheFrom": "camondatabricks-app:latest",
+    "context": "..",
+    "args": {
+      "VARIANT": "3.11"  // Explicit Python version
+    }
+  },
   "runArgs": [
     "--cpus=4",
     "--memory=4g",
@@ -16,16 +21,20 @@
         "terminal.integrated.defaultProfile.linux": "bash"
       },
       "extensions": [
+        "dbt-labs.dbt",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "dbt-labs.dbt"
+        "ms-python.autopep8",
+        "dbaeumer.vscode-eslint",
+        "github.copilot",
+        "github.copilot-chat"
       ]
     }
   },
   "containerEnv": {
     "PYTHONPATH": "/workspaces/CamOnDataBricks"
   },
-  "remoteUser": "root",
-  "overrideCommand": false,
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
   "envFile": "/workspaces/CamOnDataBricks/.env"
 }
