@@ -1,0 +1,25 @@
+# Core Databricks tools
+databricks-cli
+databricks-sdk
+
+# dbt for Databricks
+dbt-core
+dbt-databricks
+
+# Data Load Tool (DLT Hub)
+dlt==1.10.0
+
+# DuckDB & MotherDuck
+duckdb
+motherduck
+
+# Data and utility libraries
+pandas
+pyarrow
+numpy
+sqlalchemy
+rich  # for better CLI outputs
+typer  # for making CLI tools
+python-dotenv==1.1.0
+# Optional helpers
+jupyterlab

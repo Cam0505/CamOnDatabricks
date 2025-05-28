@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      cache_from:
+        - camondatabricks-app:latest
+    user: vscode
+    volumes:
+      - ..:/workspaces/CamOnDataBricks  # Bind mount project folder
+    environment:
+      - DLT_TELEMETRY=off
+      - DBT_PROFILES_DIR=/workspaces/CamOnDataBricks/dbt
+    working_dir: /workspaces/CamOnDataBricks
+    networks:
+      - camondatabricks-net
+
+networks:
+  camondatabricks-net:
+    driver: bridge
