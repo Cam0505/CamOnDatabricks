@@ -13,12 +13,21 @@
     "--memory=4g",
     "--init"
   ],
-  "features": {},
+  "workspaceFolder": "/workspaces/CamOnDataBricks",
+  "mounts": [
+    {
+      "source": "${localWorkspaceFolder}",
+      "target": "/workspaces/CamOnDataBricks",
+      "type": "bind"
+    }
+  ],
   "customizations": {
     "vscode": {
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "dbt.enableTelemetry": false,
+        "python.linting.enabled": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "python.envFile": "/workspaces/CamOnDataBricks/.env"
       },
       "extensions": [
         "dbt-labs.dbt",
@@ -32,9 +41,10 @@
     }
   },
   "containerEnv": {
-    "PYTHONPATH": "/workspaces/CamOnDataBricks"
+    "PYTHONPATH": "/workspaces/CamOnDataBricks",
+    "DBT_PROFILES_DIR": "/workspaces/CamOnDataBricks/dbt",
+    "envFile": "/workspaces/CamOnDataBricks/.env"
   },
   "remoteUser": "vscode",
-  "updateRemoteUserUID": true,
-  "envFile": "/workspaces/CamOnDataBricks/.env"
+  "updateRemoteUserUID": true
 }
